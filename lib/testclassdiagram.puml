@@ -1,0 +1,653 @@
+@startuml
+set namespaceSeparator ::
+
+class "final_project::Activities::Activities.dart::ActivitiesPage" {
+  -List<String> _relaxationactivities
+  -List<String> _physicalactivities
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::Activities::Activities.dart::ActivitiesPage"
+
+class "final_project::Activities::button_widget.dart::ButtonWidget" {
+  +String text
+  +void Function() onClicked
+  +Color color
+  +Color backgroundColor
+  +Widget build()
+}
+
+"final_project::Activities::button_widget.dart::ButtonWidget" o-- "dart::ui::void Function()"
+"final_project::Activities::button_widget.dart::ButtonWidget" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::Activities::button_widget.dart::ButtonWidget"
+
+class "final_project::Activities::DetailScreen.dart::DetailScreen" {
+  +String name
+  +_DetailScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::Activities::DetailScreen.dart::DetailScreen"
+
+class "final_project::Activities::DetailScreen.dart::_DetailScreenState" {
+  -String _text
+  -Duration _duration
+  +int maxSeconds
+  +int maxMinutes
+  -Map<String, Map<String, dynamic>> _textByNames
+  +Timer? timer
+  +int minutes
+  +int seconds
+  +void initState()
+  +void resetTimer()
+  +void startTimer()
+  +void stopTimer()
+  +Widget build()
+  +Widget buildButtons()
+  +Widget buildTimer()
+  +Widget buildTime()
+}
+
+"final_project::Activities::DetailScreen.dart::_DetailScreenState" o-- "dart::async::Timer"
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::Activities::DetailScreen.dart::_DetailScreenState"
+
+class "final_project::Assessment.dart::AssessmentPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::Assessment.dart::AssessmentPage"
+
+class "final_project::assessment_screen::answer.dart::Answer" {
+  +void Function() selectHandler
+  +String answerText
+  +Widget build()
+}
+
+"final_project::assessment_screen::answer.dart::Answer" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::assessment_screen::answer.dart::Answer"
+
+class "final_project::assessment_screen::assessment_one.dart::AssessmentScreen" {
+  +State<AssessmentScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::assessment_screen::assessment_one.dart::AssessmentScreen"
+
+class "final_project::assessment_screen::assessment_one.dart::_AssessmentScreenState" {
+  -List<Map<String, Object>> _questions
+  -int _questionIndex
+  -int _totalScore
+  -void _resetQuiz()
+  -void _answerQuestion()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::assessment_screen::assessment_one.dart::_AssessmentScreenState"
+
+class "final_project::assessment_screen::assessment_two.dart::AssessmentScreenTwo" {
+  +State<AssessmentScreenTwo> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::assessment_screen::assessment_two.dart::AssessmentScreenTwo"
+
+class "final_project::assessment_screen::assessment_two.dart::_AssessmentScreenTwoState" {
+  -List<Map<String, Object>> _questions
+  -int _questionIndex
+  -int _totalScore
+  -void _resetQuiz()
+  -void _answerQuestion()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::assessment_screen::assessment_two.dart::_AssessmentScreenTwoState"
+
+class "final_project::assessment_screen::assess_splash_screen1.dart::AssessSplashScreen" {
+  +State<AssessSplashScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::assessment_screen::assess_splash_screen1.dart::AssessSplashScreen"
+
+class "final_project::assessment_screen::assess_splash_screen1.dart::_AssessSplashScreenState" {
+  -double _progressValue
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::assessment_screen::assess_splash_screen1.dart::_AssessSplashScreenState"
+
+class "final_project::assessment_screen::assess_splash_screen2.dart::AssessSplashScreen2" {
+  +State<AssessSplashScreen2> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::assessment_screen::assess_splash_screen2.dart::AssessSplashScreen2"
+
+class "final_project::assessment_screen::assess_splash_screen2.dart::_AssessSplashScreen2State" {
+  -double _progressValue
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::assessment_screen::assess_splash_screen2.dart::_AssessSplashScreen2State"
+
+class "final_project::assessment_screen::question.dart::Question" {
+  +String questionText
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::assessment_screen::question.dart::Question"
+
+class "final_project::assessment_screen::question.dart::AnswerButton" {
+  +String answerText
+  +void Function() onPressed
+  +Widget build()
+}
+
+"final_project::assessment_screen::question.dart::AnswerButton" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::assessment_screen::question.dart::AnswerButton"
+
+class "final_project::assessment_screen::question.dart::Quiz" {
+  +List<Map<String, Object>> questions
+  +int questionIndex
+  +Function answerQuestion
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::assessment_screen::question.dart::Quiz"
+
+class "final_project::assessment_screen::quiz.dart::Quiz" {
+  +List<Map<String, Object>> questions
+  +int questionIndex
+  +Function answerQuestion
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::assessment_screen::quiz.dart::Quiz"
+
+class "final_project::assessment_screen::result.dart::Result" {
+  +int resultScore
+  +void Function() resetHandler
+  +String resultPhrase
+  +Widget build()
+}
+
+"final_project::assessment_screen::result.dart::Result" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::assessment_screen::result.dart::Result"
+
+class "final_project::assessment_screen::result2.dart::ResultTwo" {
+  +int resultScore
+  +void Function() resetHandler
+  +String resultPhrase
+  +Widget build()
+}
+
+"final_project::assessment_screen::result2.dart::ResultTwo" o-- "dart::ui::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::assessment_screen::result2.dart::ResultTwo"
+
+class "final_project::connectPage::connectMainPage.dart::MyConnectApp" {
+  -FirebaseAuth _auth
+  +Widget build()
+}
+
+"final_project::connectPage::connectMainPage.dart::MyConnectApp" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::connectPage::connectMainPage.dart::MyConnectApp"
+
+class "final_project::connectPage::new_post_widget.dart::NewPostWidget" {
+  +String userId
+  +_NewPostWidgetState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::connectPage::new_post_widget.dart::NewPostWidget"
+
+class "final_project::connectPage::new_post_widget.dart::_NewPostWidgetState" {
+  -GlobalKey<FormState> _formKey
+  -TextEditingController _contentController
+  -void _createPost()
+  +Widget build()
+}
+
+"final_project::connectPage::new_post_widget.dart::_NewPostWidgetState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"final_project::connectPage::new_post_widget.dart::_NewPostWidgetState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::connectPage::new_post_widget.dart::_NewPostWidgetState"
+
+class "final_project::connectPage::post.dart::Post" {
+  +String id
+  +String userId
+  +String username
+  +String? photoUrl
+  +String content
+  +Timestamp createdAt
+  +List<DocumentReference<Object?>>? replies
+  +int likecount
+  +Map<String, dynamic> toMap()
+}
+
+"final_project::connectPage::post.dart::Post" o-- "cloud_firestore_platform_interface::src::timestamp.dart::Timestamp"
+
+class "final_project::connectPage::post_likes.dart::PostLikes" {
+  +String postId
+  +_PostLikesState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::connectPage::post_likes.dart::PostLikes"
+
+class "final_project::connectPage::post_likes.dart::_PostLikesState" {
+  -int _likes
+  -bool _liked
+  -String? _currentUserId
+  +void initState()
+  -Future<void> _getLikes()
+  -Future<void> _likePost()
+  -Future<void> _unlikePost()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::connectPage::post_likes.dart::_PostLikesState"
+
+class "final_project::connectPage::post_widget.dart::PostsWidget" {
+  -FirebaseFirestore _firestore
+  -FirebaseAuth _auth
+  +Widget build()
+  -void _showReplies()
+  -void _showReplyDialog()
+}
+
+"final_project::connectPage::post_widget.dart::PostsWidget" o-- "cloud_firestore::cloud_firestore.dart::FirebaseFirestore"
+"final_project::connectPage::post_widget.dart::PostsWidget" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::connectPage::post_widget.dart::PostsWidget"
+
+class "final_project::connectPage::reply.dart::Reply" {
+  +String id
+  +String postId
+  +String userId
+  +String? photoUrl
+  +String username
+  +String content
+  +Timestamp createdAt
+  +int likecount
+  +Map<String, dynamic> toMap()
+}
+
+"final_project::connectPage::reply.dart::Reply" o-- "cloud_firestore_platform_interface::src::timestamp.dart::Timestamp"
+
+class "final_project::connectPage::reply_likes.dart::ReplyLikes" {
+  +String replyId
+  +_ReplyLikesState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::connectPage::reply_likes.dart::ReplyLikes"
+
+class "final_project::connectPage::reply_likes.dart::_ReplyLikesState" {
+  -int _likes
+  -bool _liked
+  -String? _currentUserId
+  +void initState()
+  -Future<void> _getLikes()
+  -Future<void> _likePost()
+  -Future<void> _unlikePost()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::connectPage::reply_likes.dart::_ReplyLikesState"
+
+class "final_project::contacts.dart::ContactsPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::contacts.dart::ContactsPage"
+
+class "final_project::dashboard.dart::DashboardPage" {
+  +State<DashboardPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::dashboard.dart::DashboardPage"
+
+class "final_project::dashboard.dart::_DashboardPageState" {
+  +List<dynamic> imageList
+  +CarouselController carouselController
+  +int currentIndex
+  +Widget build()
+}
+
+"final_project::dashboard.dart::_DashboardPageState" o-- "carousel_slider::carousel_controller.dart::CarouselController"
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::dashboard.dart::_DashboardPageState"
+
+class "final_project::doctors%20nearby::nearbydoctors.dart::NearbyDoctorsPage" {
+  +State<NearbyDoctorsPage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::doctors%20nearby::nearbydoctors.dart::NearbyDoctorsPage"
+
+class "final_project::doctors%20nearby::nearbydoctors.dart::_NearbyDoctorsPageState" {
+  +String apiKey
+  +String radius
+  +String type
+  +String keyword
+  +NearbyPlacesResponse nearbyPlacesResponse
+  +Widget build()
+  +void getNearbyPlaces()
+  +Widget nearbyPlacesWidget()
+  +Future<Map<String, dynamic>> getPlaceDetails()
+  -Future<bool> _isLocationServiceEnabled()
+}
+
+"final_project::doctors%20nearby::nearbydoctors.dart::_NearbyDoctorsPageState" o-- "final_project::model::nearby_response.dart::NearbyPlacesResponse"
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::doctors%20nearby::nearbydoctors.dart::_NearbyDoctorsPageState"
+
+class "final_project::events.dart::EventsPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::events.dart::EventsPage"
+
+class "final_project::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::main.dart::MyApp"
+
+class "final_project::main.dart::MyHomePage" {
+  +State<MyHomePage> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::main.dart::MyHomePage"
+
+class "final_project::main.dart::_MyHomePageState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::main.dart::_MyHomePageState"
+
+class "final_project::model::nearby_response.dart::NearbyPlacesResponse" {
+  +List<Results>? results
+  +String? status
+  +Map<String, dynamic> toJson()
+}
+
+class "final_project::model::nearby_response.dart::Results" {
+  +Geometry? geometry
+  +String? icon
+  +String? iconBackgroundColor
+  +String? iconMaskBaseUri
+  +String? name
+  +List<Photos>? photos
+  +String? placeId
+  +String? reference
+  +String? scope
+  +List<String>? types
+  +String? vicinity
+  +String? businessStatus
+  +OpeningHours? openingHours
+  +PlusCode? plusCode
+  +dynamic rating
+  +int? userRatingsTotal
+  +Map<String, dynamic> toJson()
+}
+
+"final_project::model::nearby_response.dart::Results" o-- "final_project::model::nearby_response.dart::Geometry"
+"final_project::model::nearby_response.dart::Results" o-- "final_project::model::nearby_response.dart::OpeningHours"
+"final_project::model::nearby_response.dart::Results" o-- "final_project::model::nearby_response.dart::PlusCode"
+
+class "final_project::model::nearby_response.dart::Geometry" {
+  +Location? location
+  +Viewport? viewport
+  +Map<String, dynamic> toJson()
+}
+
+"final_project::model::nearby_response.dart::Geometry" o-- "final_project::model::nearby_response.dart::Location"
+"final_project::model::nearby_response.dart::Geometry" o-- "final_project::model::nearby_response.dart::Viewport"
+
+class "final_project::model::nearby_response.dart::Location" {
+  +double? lat
+  +double? lng
+  +Map<String, dynamic> toJson()
+}
+
+class "final_project::model::nearby_response.dart::Viewport" {
+  +Location? northeast
+  +Location? southwest
+  +Map<String, dynamic> toJson()
+}
+
+"final_project::model::nearby_response.dart::Viewport" o-- "final_project::model::nearby_response.dart::Location"
+
+class "final_project::model::nearby_response.dart::Photos" {
+  +int? height
+  +List<String>? htmlAttributions
+  +String? photoReference
+  +int? width
+  +Map<String, dynamic> toJson()
+}
+
+class "final_project::model::nearby_response.dart::OpeningHours" {
+  +bool? openNow
+  +Map<String, dynamic> toJson()
+}
+
+class "final_project::model::nearby_response.dart::PlusCode" {
+  +String? compoundCode
+  +String? globalCode
+  +Map<String, dynamic> toJson()
+}
+
+class "final_project::MoodTracker::mood.dart::MoodTracker" {
+  -List<Mood> _recentMoods
+  -CollectionReference<Object?> _moodHistoryCollection
+  +Future<void> loadMoodHistory()
+  +List<Mood> getRecentMoods()
+  +Future<void> addMood()
+  +Future<void> clearMoodHistory()
+  +Future<void> deleteMoodHistory()
+  +dynamic getStreamOfMoods()
+}
+
+"final_project::MoodTracker::mood.dart::MoodTracker" o-- "cloud_firestore::cloud_firestore.dart::CollectionReference<Object>"
+
+class "final_project::MoodTracker::mood.dart::Mood" {
+  +int index
+  {static} +List<Mood> values
+  {static} +Mood Great
+  {static} +Mood Good
+  {static} +Mood Okay
+  {static} +Mood Bad
+  {static} +Mood Awful
+}
+
+"final_project::MoodTracker::mood.dart::Mood" o-- "final_project::MoodTracker::mood.dart::Mood"
+"dart::core::Enum" <|-- "final_project::MoodTracker::mood.dart::Mood"
+
+class "final_project::MoodTracker::MoodTracker.dart::MoodTrackerScreen" {
+  +_MoodTrackerScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::MoodTracker::MoodTracker.dart::MoodTrackerScreen"
+
+class "final_project::MoodTracker::MoodTracker.dart::_MoodTrackerScreenState" {
+  -MoodTracker _moodTracker
+  +void initState()
+  +Widget build()
+}
+
+"final_project::MoodTracker::MoodTracker.dart::_MoodTrackerScreenState" o-- "final_project::MoodTracker::mood.dart::MoodTracker"
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::MoodTracker::MoodTracker.dart::_MoodTrackerScreenState"
+
+class "final_project::MoodTracker::MoodTracker.dart::MoodSelectionDialog" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::MoodTracker::MoodTracker.dart::MoodSelectionDialog"
+
+class "final_project::my_drawer_header.dart::MyHeaderDrawer" {
+  +State<MyHeaderDrawer> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::my_drawer_header.dart::MyHeaderDrawer"
+
+class "final_project::my_drawer_header.dart::_MyHeaderDrawerState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::my_drawer_header.dart::_MyHeaderDrawerState"
+
+class "final_project::notes.dart::NotesPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::notes.dart::NotesPage"
+
+class "final_project::notifications.dart::NotificationsPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::notifications.dart::NotificationsPage"
+
+class "final_project::privacy_policy.dart::PrivacyPolicyPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::privacy_policy.dart::PrivacyPolicyPage"
+
+class "final_project::Resources::ResourcesPage.dart::ResourcesPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::Resources::ResourcesPage.dart::ResourcesPage"
+
+class "final_project::screens::home.dart::HomeScreen" {
+  +State<HomeScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::screens::home.dart::HomeScreen"
+
+class "final_project::screens::home.dart::_HomeScreenState" {
+  +DrawerSections currentPage
+  +Widget build()
+  +Widget MyDrawerList()
+  +Widget menuItem()
+}
+
+"final_project::screens::home.dart::_HomeScreenState" o-- "final_project::screens::home.dart::DrawerSections"
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::screens::home.dart::_HomeScreenState"
+
+class "final_project::screens::home.dart::DrawerSections" {
+  +int index
+  {static} +List<DrawerSections> values
+  {static} +DrawerSections dashboard
+  {static} +DrawerSections contacts
+  {static} +DrawerSections events
+  {static} +DrawerSections notes
+  {static} +DrawerSections settings
+  {static} +DrawerSections notifications
+  {static} +DrawerSections privacy_policy
+  {static} +DrawerSections logout
+}
+
+"final_project::screens::home.dart::DrawerSections" o-- "final_project::screens::home.dart::DrawerSections"
+"dart::core::Enum" <|-- "final_project::screens::home.dart::DrawerSections"
+
+class "final_project::screens::login.dart::LoginScreen" {
+  +_LoginScreenState createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::screens::login.dart::LoginScreen"
+
+class "final_project::screens::login.dart::_LoginScreenState" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::screens::login.dart::_LoginScreenState"
+
+class "final_project::screens::signin_screen.dart::LoginSignup" {
+  +State<LoginSignup> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::screens::signin_screen.dart::LoginSignup"
+
+class "final_project::screens::signin_screen.dart::_LoginSignupState" {
+  -TextEditingController _passwordTextController
+  -TextEditingController _emailTextController
+  +Widget build()
+  +Row signUpOption()
+}
+
+"final_project::screens::signin_screen.dart::_LoginSignupState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::screens::signin_screen.dart::_LoginSignupState"
+
+class "final_project::screens::signup_screen.dart::SignUpScreen" {
+  +State<SignUpScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::screens::signup_screen.dart::SignUpScreen"
+
+class "final_project::screens::signup_screen.dart::_SignUpScreenState" {
+  -TextEditingController _passwordTextController
+  -TextEditingController _emailTextController
+  -TextEditingController _userNameTextController
+  +Widget build()
+}
+
+"final_project::screens::signup_screen.dart::_SignUpScreenState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::screens::signup_screen.dart::_SignUpScreenState"
+
+class "final_project::services::firebase_services.dart::FirebaseServices" {
+  -FirebaseAuth _auth
+  -GoogleSignIn _googleSignIn
+  +dynamic signInWithGoogle()
+  +dynamic signOut()
+}
+
+"final_project::services::firebase_services.dart::FirebaseServices" o-- "firebase_auth::firebase_auth.dart::FirebaseAuth"
+"final_project::services::firebase_services.dart::FirebaseServices" o-- "google_sign_in::google_sign_in.dart::GoogleSignIn"
+
+class "final_project::settings.dart::SettingsPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::settings.dart::SettingsPage"
+
+class "final_project::splash_screen.dart::SplashScreen" {
+  +State<SplashScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "final_project::splash_screen.dart::SplashScreen"
+
+class "final_project::splash_screen.dart::_SplashScreenState" {
+  +void initState()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "final_project::splash_screen.dart::_SplashScreenState"
+
+class "final_project::utils::Resources_list::anxiety.dart::AnxietyPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::utils::Resources_list::anxiety.dart::AnxietyPage"
+
+class "final_project::utils::Resources_list::depression.dart::DepressionPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::utils::Resources_list::depression.dart::DepressionPage"
+
+'class "final_project::utils::Resources_list::lifestyle.dart::LifestylePage" {
+'  +Widget build()
+'}
+'
+'"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::utils::Resources_list::lifestyle.dart::LifestylePage"
+'
+'}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::utils::Resources_list::physicalhealth.dart::PhysicalHealthPage"
+
+class "final_project::utils::Resources_list::sleepissues.dart::SleepIssuesPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::utils::Resources_list::sleepissues.dart::SleepIssuesPage"
+
+class "final_project::utils::Resources_list::stress.dart::StressPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "final_project::utils::Resources_list::stress.dart::StressPage"
+
+
+@enduml
